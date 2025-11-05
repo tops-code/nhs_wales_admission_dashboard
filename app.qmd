@@ -21,6 +21,8 @@ server: shiny
 #| label: load-packages
 #| context: setup
 #| message: false
+
+##load the packages
 library(tidyverse)
 library(readxl)
 library(DT)
@@ -31,6 +33,8 @@ library(bsicons)
 library(naniar)
 library(here)
 library(patchwork)
+
+##set custom theme
 theme_custom <- function (base_size = 15, base_family = "Atkinson Hyperlegible") {
     half_line <- base_size/2
   theme(
@@ -127,6 +131,8 @@ theme_custom <- function (base_size = 15, base_family = "Atkinson Hyperlegible")
     complete = TRUE
   )
 }
+
+##colors
 colors<-c('#87CEEB', '#0D3B66', '#254441', '#DB504A', '#F5F4EF')
 ```
 
@@ -136,7 +142,7 @@ colors<-c('#87CEEB', '#0D3B66', '#254441', '#DB504A', '#F5F4EF')
 #| message: false
 
 
-##
+## health boards and areas served
   health_board <- c(
     "Aneurin Bevan University Health Board",
     "Aneurin Bevan University Health Board",
@@ -245,12 +251,12 @@ get_data<-function(df){
     "Neath Port Talbot"
   )
   
-  # Create the data frame
+# Create the data frame
   welsh_health_boards <- data.frame(
     health_board = health_board,
     area_served = area_served
   )
-  
+  #rename the columns
   main_df<-df|>rename(local_authority = "...2", 
                       local_auth_two = "...3",
                       Zero_to_fifteen =  "All ages...4",
@@ -288,6 +294,8 @@ get_data<-function(df){
     main_df
   )
 }
+
+#create function to get data from files
 get_data_from_nhs<-function(data_location, disease_source, res_or_provider){
   
   health_boards<-c("Aneurin Bevan ULHB", 
@@ -412,6 +420,7 @@ This dashboard displays statistics for Emergecnies in the 7 welsh NHS health boa
 
 
 ```{r}
+#| label: InputSection
 
  selectInput( 
     "HealthBoard", 
@@ -659,6 +668,7 @@ total_table <- reactive({
   
 })
 
+#render the graphs and tables
 
 output$Admissions<-renderText(
   {sum(as.numeric(total_table()$Admissions))}

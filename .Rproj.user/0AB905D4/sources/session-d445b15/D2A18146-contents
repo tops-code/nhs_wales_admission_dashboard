@@ -1,4 +1,0 @@
-main_cat<-diagnosis_with_types|>filter(str_length(Code) == 3)|>select(Code, DiagnosisType)
-
-
-write.csv(main_cat, "main.csv")
