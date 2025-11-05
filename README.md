@@ -4,6 +4,6 @@ It was obtained from the official NHS Wales data repository.
 
 It also gets population data from https://statswales.gov.wales/.
 
-Built with Quarto and Shiny. 
+Built with R,  Quarto and Shiny. 
 
 It was deployed on [shinny](https://www.shinyapps.io/) and is live [@https://www.shinyapps.io/](https://zuaud1-toochukwu-ogbonna.shinyapps.io/WelshHealthBoards/)
